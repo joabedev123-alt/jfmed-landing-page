@@ -112,13 +112,19 @@ function App() {
             { icon: <FaPlane />, title: "Transporte Aeromédico", desc: "Transferências rápidas em todo território nacional." },
             { icon: <FaCalendarAlt />, title: "Cobertura de Eventos", desc: "Eventos esportivos, corporativos e sociais." },
             { icon: <FaShieldAlt />, title: "Atendimento Pré-Hospitalar", desc: "Primeiros socorros e suporte avançado." }
-          ].map((srv, idx) => (
-            <motion.div key={idx} className="service-card hover-3d" variants={fadeIn}>
-              <div className="service-icon">{srv.icon}</div>
-              <h3>{srv.title}</h3>
-              <p>{srv.desc}</p>
-            </motion.div>
-          ))}
+          ].map((srv, idx) => {
+            const message = encodeURIComponent(`Olá, gostaria de solicitar o serviço de ${srv.title}.`);
+            return (
+              <motion.div key={idx} className="service-card hover-3d" variants={fadeIn} style={{ display: 'flex', flexDirection: 'column' }}>
+                <div className="service-icon">{srv.icon}</div>
+                <h3>{srv.title}</h3>
+                <p style={{ marginBottom: '1.5rem', flexGrow: 1 }}>{srv.desc}</p>
+                <a href={`https://wa.me/5532998651414?text=${message}`} target="_blank" rel="noreferrer" className="btn-primary" style={{ padding: '0.5rem 1rem', fontSize: '0.9rem', width: '100%', justifyContent: 'center' }}>
+                  <FaWhatsapp /> Solicitar Serviço
+                </a>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </section>
 
@@ -259,11 +265,17 @@ function App() {
           <p style={{ opacity: 0.8, marginTop: '1rem' }}>Capacitação para profissionais e empresas</p>
         </motion.div>
         <div className="trainings-grid">
-          {["Primeiros Socorros", "APH", "Suporte Básico de Vida", "Atendimento em Eventos", "Capacitação para Empresas", "Capacitação para Escolas"].map((tr, idx) => (
-            <div key={idx} className="training-card">
-              <h4>{tr}</h4>
-            </div>
-          ))}
+          {["Primeiros Socorros", "APH", "Suporte Básico de Vida", "Atendimento em Eventos", "Capacitação para Empresas", "Capacitação para Escolas"].map((tr, idx) => {
+            const message = encodeURIComponent(`Olá, gostaria de saber mais sobre o treinamento de ${tr}.`);
+            return (
+              <div key={idx} className="training-card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '1.5rem' }}>
+                <h4>{tr}</h4>
+                <a href={`https://wa.me/5532998651414?text=${message}`} target="_blank" rel="noreferrer" className="btn-primary" style={{ padding: '0.5rem 1rem', fontSize: '0.9rem', width: '100%', justifyContent: 'center', background: 'transparent', color: 'var(--color-primary)', border: '1px solid var(--color-primary)', boxShadow: 'none' }}>
+                  <FaWhatsapp /> Saber Mais
+                </a>
+              </div>
+            );
+          })}
         </div>
       </section>
 
