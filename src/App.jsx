@@ -35,8 +35,7 @@ function App() {
       <header className={scrolled ? 'scrolled' : ''}>
         <div className="container nav-container">
           <a href="#" className="logo">
-            <FaAmbulance className="logo-icon" />
-            <span className="logo-text">JFMED</span>
+            <img src="/logo.png" alt="JFMED Logo" className="header-logo" />
           </a>
           <nav>
             <ul>
@@ -358,8 +357,7 @@ function App() {
           <div className="footer-grid">
             <div className="footer-about">
               <div className="logo" style={{ marginBottom: '1rem' }}>
-                <FaAmbulance className="logo-icon" />
-                <span className="logo-text">JFMED</span>
+                <img src="/logo.png" alt="JFMED Logo" className="footer-logo" />
               </div>
               <p>
                 A JFMED Ambulância atua com excelência em serviços de remoção terrestre e aeromédica.
