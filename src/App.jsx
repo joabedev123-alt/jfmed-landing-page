@@ -50,7 +50,7 @@ function App() {
             </ul>
           </nav>
           <div className="header-actions">
-            <a href="https://wa.me/5532939377000" target="_blank" rel="noreferrer" className="btn-primary header-btn">
+            <a href="https://wa.me/5532998651414" target="_blank" rel="noreferrer" className="btn-primary header-btn">
               🚑 <span className="hide-mobile">Solicitar Ambulância</span>
             </a>
             <button className="mobile-menu-btn" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
@@ -74,10 +74,10 @@ function App() {
             Remoções UTI, UTI Neonatal, UTI Pediátrica, Cobertura de Eventos e Transporte Aeromédico em Todo o Brasil.
           </motion.p>
           <motion.div className="hero-buttons" variants={fadeIn}>
-            <a href="https://wa.me/5532939377000" target="_blank" rel="noreferrer" className="btn-primary">
+            <a href="https://wa.me/5532998651414" target="_blank" rel="noreferrer" className="btn-primary">
               🚑 Solicitar Atendimento
             </a>
-            <a href="tel:+5532939377000" className="btn-secondary">
+            <a href="tel:+5532998651414" className="btn-secondary">
               📞 Falar com Especialista
             </a>
           </motion.div>
@@ -124,7 +124,7 @@ function App() {
                 <div className="service-icon">{srv.icon}</div>
                 <h3>{srv.title}</h3>
                 <p style={{ marginBottom: '1.5rem', flexGrow: 1 }}>{srv.desc}</p>
-                <a href={`https://wa.me/5532939377000?text=${message}`} target="_blank" rel="noreferrer" className="btn-primary" style={{ padding: '0.5rem 1rem', fontSize: '0.9rem', width: '100%', justifyContent: 'center' }}>
+                <a href={`https://wa.me/5532998651414?text=${message}`} target="_blank" rel="noreferrer" className="btn-primary" style={{ padding: '0.5rem 1rem', fontSize: '0.9rem', width: '100%', justifyContent: 'center' }}>
                   <FaWhatsapp /> Solicitar Serviço
                 </a>
               </motion.div>
@@ -147,7 +147,7 @@ function App() {
             <p>
               A JFMED realiza remoções aeromédicas com equipe especializada, equipamentos avançados e logística completa para transferências nacionais.
             </p>
-            <a href="https://wa.me/5532939377000" target="_blank" rel="noreferrer" className="btn-primary">
+            <a href="https://wa.me/5532998651414" target="_blank" rel="noreferrer" className="btn-primary">
               Solicitar Transporte Aeromédico
             </a>
           </motion.div>
@@ -275,7 +275,7 @@ function App() {
             return (
               <div key={idx} className="training-card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '1.5rem' }}>
                 <h4>{tr}</h4>
-                <a href={`https://wa.me/5532939377000?text=${message}`} target="_blank" rel="noreferrer" className="btn-primary" style={{ padding: '0.5rem 1rem', fontSize: '0.9rem', width: '100%', justifyContent: 'center', background: 'transparent', color: 'var(--color-primary)', border: '1px solid var(--color-primary)', boxShadow: 'none' }}>
+                <a href={`https://wa.me/5532998651414?text=${message}`} target="_blank" rel="noreferrer" className="btn-primary" style={{ padding: '0.5rem 1rem', fontSize: '0.9rem', width: '100%', justifyContent: 'center', background: 'transparent', color: 'var(--color-primary)', border: '1px solid var(--color-primary)', boxShadow: 'none' }}>
                   <FaWhatsapp /> Saber Mais
                 </a>
               </div>
@@ -291,7 +291,7 @@ function App() {
           <motion.div initial="hidden" whileInView="visible" variants={fadeIn} viewport={{ once: true }}>
             <h2>Precisa de Atendimento Médico Especializado?</h2>
             <p>Nossa equipe está pronta para atender você 24 horas por dia.</p>
-            <a href="https://wa.me/5532939377000" target="_blank" rel="noreferrer" className="btn-primary btn-giant">
+            <a href="https://wa.me/5532998651414" target="_blank" rel="noreferrer" className="btn-primary btn-giant">
               <FaWhatsapp style={{ fontSize: '2rem' }}/> Chamar no WhatsApp
             </a>
           </motion.div>
@@ -308,8 +308,8 @@ function App() {
               <FaPhoneAlt className="info-icon" />
               <div className="info-text">
                 <h4>Telefone</h4>
-                <p>(32) 3216-2534</p>
                 <p>(032) 9 3937-7000</p>
+                <p>(32) 9 9865-1414</p>
               </div>
             </div>
             <div className="info-item">
@@ -389,8 +389,8 @@ function App() {
             <div className="footer-links">
               <h4>Contato</h4>
               <ul>
-                <li><a href="tel:+553232162534">(32) 3216-2534</a></li>
                 <li><a href="https://wa.me/5532939377000">(032) 9 3937-7000</a></li>
+                <li><a href="https://wa.me/5532998651414">(32) 9 9865-1414</a></li>
                 <li><a href="https://instagram.com/jfmed4">@jfmed4</a></li>
               </ul>
             </div>
