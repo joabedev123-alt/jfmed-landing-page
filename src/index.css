@@ -178,6 +178,28 @@ nav ul {
   color: var(--color-accent);
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--color-white);
+  font-size: 1.8rem;
+  cursor: pointer;
+  z-index: 1001;
+}
+header.scrolled .mobile-menu-btn {
+  color: var(--color-primary);
+}
+.header-btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9rem;
+}
+
 /* Hero Section */
 .hero {
   min-height: 100vh;
@@ -593,12 +615,12 @@ footer {
 
 /* Responsive */
 .header-logo {
-  height: 90px;
+  height: 120px;
   width: auto;
   transition: height 0.3s ease;
 }
 .footer-logo {
-  height: 120px;
+  height: 160px;
   width: auto;
   transition: height 0.3s ease;
 }
@@ -610,9 +632,40 @@ footer {
   section { padding: 4rem 0; }
 }
 @media (max-width: 768px) {
-  header nav { display: none; } 
-  .header-logo { height: 60px; }
-  .footer-logo { height: 90px; }
+  .mobile-menu-btn { display: block; }
+  .desktop-nav {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 250px;
+    height: 100vh;
+    background: var(--color-white);
+    padding: 6rem 2rem;
+    transition: left 0.3s ease;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+  }
+  .desktop-nav.open {
+    left: 0;
+  }
+  .desktop-nav ul {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .desktop-nav .nav-link {
+    color: var(--color-dark);
+    font-size: 1.2rem;
+  }
+  .hide-mobile { display: none; }
+  .header-btn {
+    padding: 0.5rem;
+    width: 45px;
+    height: 45px;
+    justify-content: center;
+    border-radius: 50%;
+  }
+  .header-logo { height: 80px; }
+  .footer-logo { height: 120px; }
   .hero h1 { font-size: 2.2rem; }
   .hero p { font-size: 1rem; }
   .hero-buttons { flex-direction: column; width: 100%; }
@@ -622,7 +675,6 @@ footer {
   .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
   .contact-form { padding: 1.5rem 1rem; }
   .number-item h3 { font-size: 2rem; }
-  .nav-container .btn-primary { display: none; } 
   header { padding: 1rem 0; }
   .hex-item { flex: 1 1 100%; justify-content: center; text-align: center; }
   .hero-indicators { flex-direction: column; gap: 1rem; align-items: flex-start; }
@@ -632,8 +684,8 @@ footer {
   .contact-info { gap: 1.5rem; }
 }
 @media (max-width: 480px) {
-  .header-logo { height: 50px; }
-  .footer-logo { height: 70px; }
+  .header-logo { height: 70px; }
+  .footer-logo { height: 90px; }
   .hero h1 { font-size: 1.8rem; }
   .numbers-grid { grid-template-columns: 1fr; }
   .gallery-item { min-width: 250px; height: 160px; }

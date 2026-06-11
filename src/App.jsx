@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { FaHospital, FaHeartbeat, FaHeart, FaShieldAlt, FaCalendarAlt, FaPhoneAlt, FaMapMarkerAlt, FaPlane, FaWhatsapp, FaInstagram, FaAmbulance } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FaHospital, FaHeartbeat, FaHeart, FaShieldAlt, FaCalendarAlt, FaPhoneAlt, FaMapMarkerAlt, FaPlane, FaWhatsapp, FaInstagram, FaAmbulance, FaBars, FaTimes } from 'react-icons/fa';
 import './index.css';
 
 const fadeIn = {
@@ -20,6 +20,7 @@ const staggerContainer = {
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,20 +38,25 @@ function App() {
           <a href="#" className="logo">
             <img src="/logo.png" alt="JFMED Logo" className="header-logo" />
           </a>
-          <nav>
+          <nav className={`desktop-nav ${mobileMenuOpen ? 'open' : ''}`}>
             <ul>
-              <li><a href="#home" className="nav-link">Home</a></li>
-              <li><a href="#servicos" className="nav-link">Serviços</a></li>
-              <li><a href="#aeromedico" className="nav-link">Aeromédico</a></li>
-              <li><a href="#eventos" className="nav-link">Eventos</a></li>
-              <li><a href="#treinamentos" className="nav-link">Treinamentos</a></li>
-              <li><a href="#sobre" className="nav-link">Sobre Nós</a></li>
-              <li><a href="#contato" className="nav-link">Contato</a></li>
+              <li><a href="#home" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Home</a></li>
+              <li><a href="#servicos" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Serviços</a></li>
+              <li><a href="#aeromedico" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Aeromédico</a></li>
+              <li><a href="#eventos" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Eventos</a></li>
+              <li><a href="#treinamentos" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Treinamentos</a></li>
+              <li><a href="#sobre" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Sobre Nós</a></li>
+              <li><a href="#contato" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Contato</a></li>
             </ul>
           </nav>
-          <a href="https://wa.me/5532998651414" target="_blank" rel="noreferrer" className="btn-primary" style={{ padding: '0.75rem 1.5rem', fontSize: '0.9rem' }}>
-            🚑 Solicitar Ambulância
-          </a>
+          <div className="header-actions">
+            <a href="https://wa.me/5532939377000" target="_blank" rel="noreferrer" className="btn-primary header-btn">
+              🚑 <span className="hide-mobile">Solicitar Ambulância</span>
+            </a>
+            <button className="mobile-menu-btn" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+              {mobileMenuOpen ? <FaTimes /> : <FaBars />}
+            </button>
+          </div>
         </div>
       </header>
 
@@ -68,10 +74,10 @@ function App() {
             Remoções UTI, UTI Neonatal, UTI Pediátrica, Cobertura de Eventos e Transporte Aeromédico em Todo o Brasil.
           </motion.p>
           <motion.div className="hero-buttons" variants={fadeIn}>
-            <a href="https://wa.me/5532998651414" target="_blank" rel="noreferrer" className="btn-primary">
+            <a href="https://wa.me/5532939377000" target="_blank" rel="noreferrer" className="btn-primary">
               🚑 Solicitar Atendimento
             </a>
-            <a href="tel:+5532998651414" className="btn-secondary">
+            <a href="tel:+5532939377000" className="btn-secondary">
               📞 Falar com Especialista
             </a>
           </motion.div>
@@ -118,7 +124,7 @@ function App() {
                 <div className="service-icon">{srv.icon}</div>
                 <h3>{srv.title}</h3>
                 <p style={{ marginBottom: '1.5rem', flexGrow: 1 }}>{srv.desc}</p>
-                <a href={`https://wa.me/5532998651414?text=${message}`} target="_blank" rel="noreferrer" className="btn-primary" style={{ padding: '0.5rem 1rem', fontSize: '0.9rem', width: '100%', justifyContent: 'center' }}>
+                <a href={`https://wa.me/5532939377000?text=${message}`} target="_blank" rel="noreferrer" className="btn-primary" style={{ padding: '0.5rem 1rem', fontSize: '0.9rem', width: '100%', justifyContent: 'center' }}>
                   <FaWhatsapp /> Solicitar Serviço
                 </a>
               </motion.div>
@@ -141,7 +147,7 @@ function App() {
             <p>
               A JFMED realiza remoções aeromédicas com equipe especializada, equipamentos avançados e logística completa para transferências nacionais.
             </p>
-            <a href="https://wa.me/5532998651414" target="_blank" rel="noreferrer" className="btn-primary">
+            <a href="https://wa.me/5532939377000" target="_blank" rel="noreferrer" className="btn-primary">
               Solicitar Transporte Aeromédico
             </a>
           </motion.div>
@@ -170,14 +176,14 @@ function App() {
           </motion.p>
           
           <div className="gallery">
-            {[
-              "Corridas", "Trilhas", "Esportes radicais", "Eventos corporativos", "Festivais", "Shows"
-            ].map((item, idx) => (
-              <div key={idx} className="gallery-item">
-                <img src={`https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=800&auto=format&fit=crop&sig=${idx}`} alt={item} />
-                <div className="gallery-item-title">{item}</div>
-              </div>
-            ))}
+            {Array.from({ length: 18 }, (_, i) => {
+              const num = (i + 1).toString().padStart(2, '0');
+              return (
+                <div key={i} className="gallery-item">
+                  <img src={`/imagens/${num}.jpeg`} alt={`Cobertura de Evento ${num}`} />
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -269,7 +275,7 @@ function App() {
             return (
               <div key={idx} className="training-card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '1.5rem' }}>
                 <h4>{tr}</h4>
-                <a href={`https://wa.me/5532998651414?text=${message}`} target="_blank" rel="noreferrer" className="btn-primary" style={{ padding: '0.5rem 1rem', fontSize: '0.9rem', width: '100%', justifyContent: 'center', background: 'transparent', color: 'var(--color-primary)', border: '1px solid var(--color-primary)', boxShadow: 'none' }}>
+                <a href={`https://wa.me/5532939377000?text=${message}`} target="_blank" rel="noreferrer" className="btn-primary" style={{ padding: '0.5rem 1rem', fontSize: '0.9rem', width: '100%', justifyContent: 'center', background: 'transparent', color: 'var(--color-primary)', border: '1px solid var(--color-primary)', boxShadow: 'none' }}>
                   <FaWhatsapp /> Saber Mais
                 </a>
               </div>
@@ -285,7 +291,7 @@ function App() {
           <motion.div initial="hidden" whileInView="visible" variants={fadeIn} viewport={{ once: true }}>
             <h2>Precisa de Atendimento Médico Especializado?</h2>
             <p>Nossa equipe está pronta para atender você 24 horas por dia.</p>
-            <a href="https://wa.me/5532998651414" target="_blank" rel="noreferrer" className="btn-primary btn-giant">
+            <a href="https://wa.me/5532939377000" target="_blank" rel="noreferrer" className="btn-primary btn-giant">
               <FaWhatsapp style={{ fontSize: '2rem' }}/> Chamar no WhatsApp
             </a>
           </motion.div>
@@ -303,7 +309,7 @@ function App() {
               <div className="info-text">
                 <h4>Telefone</h4>
                 <p>(32) 3216-2534</p>
-                <p>(32) 99865-1414</p>
+                <p>(032) 9 3937-7000</p>
               </div>
             </div>
             <div className="info-item">
@@ -384,7 +390,7 @@ function App() {
               <h4>Contato</h4>
               <ul>
                 <li><a href="tel:+553232162534">(32) 3216-2534</a></li>
-                <li><a href="https://wa.me/5532998651414">(32) 99865-1414</a></li>
+                <li><a href="https://wa.me/5532939377000">(032) 9 3937-7000</a></li>
                 <li><a href="https://instagram.com/jfmed4">@jfmed4</a></li>
               </ul>
             </div>
